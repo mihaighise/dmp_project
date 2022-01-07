@@ -9,7 +9,6 @@ const int trigPin = 6;
 const int echoPin = 5;
 
 
-//TO DO implement these pins into the go -- make sure it works fine
 const int autoHeadlightsPin = 12;
 const int ledHeadlightsPin = 13;
 const int ledHeadlightsPinSecond = 10;
@@ -37,9 +36,9 @@ void setup()
   pinMode(buttonWipersPin, INPUT); // button for wipers
   attachInterrupt(digitalPinToInterrupt(buttonWipersPin), wipersButton, RISING); //interrupt for wipers button
 
-//  pinMode(trigPin, OUTPUT);
-//  pinMode(echoPin, INPUT);
-//  pinMode(buzzer, OUTPUT);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(buzzer, OUTPUT);
   pinMode(ledPin, OUTPUT); //led for parking sensor
   pinMode(buttonParkingPin, INPUT); //button for parking sensor
   attachInterrupt(digitalPinToInterrupt(buttonParkingPin), parkingSensor, RISING); // interrupt for parking sensor
@@ -55,7 +54,7 @@ void loop()
   {
     Serial.println(light);
     //check if there is enough light
-    if (light < 90)
+    if (light < 80)
     {
       digitalWrite(ledHeadlightsPin, HIGH); 
       digitalWrite(ledHeadlightsPinSecond, HIGH);
